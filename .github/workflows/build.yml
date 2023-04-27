@@ -59,6 +59,9 @@ jobs:
     name: Publish snapshot to Github Packages
     needs: [build]
     runs-on: ubuntu-latest
+    permissions:
+      packages: write
+      contents: read
     # only publish the snapshot when it is a push on the master or the release branch (starts with r0.x or r1.x)
     # if: ${{ github.event_name == 'push' && (github.ref == 'refs/heads/master' || startsWith(github.ref, 'refs/heads/r0.') || startsWith(github.ref, 'refs/heads/r1.')) }}
     env:
